@@ -1,42 +1,54 @@
-<div class="card shadow-sm">
+<!-- Playlist Title -->
+<div class="card mb-5 shadow-sm" *ngFor="let p of playlists; let i = index">
   <div class="card-body">
-    <h1 class="card-title">Coldplay</h1>
-    <p class="card-subtitle text-muted">total 2 songs, 5 minutes</p>
+    <h1 class="card-title">{{ p.name }}</h1>
+    <p class="card-subtitle text-muted">
+      total {{ p.totalSongs }} songs, {{ p.totalDuration }} minutes
+    </p>
     <p class="card-text mt-3">
-      More than a coffee, this is all of your favorite accoustic songs.
+      {{ p.description }}
     </p>
     <hr />
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item list-group-item-action">
-        <div class="row align-items-center">
-          <div class="col-auto">
-            <img src="../assets/icons/play-button.png" />
-          </div>
-          <div class="col-auto">
-            <p style="margin-bottom: 0; font-weight: 500; font-size: 1.1rem">
-              Yellow
-            </p>
-            <p
-              class="text-muted"
-              style="font-size: 0.9rem; font-weight: 400; margin-bottom: 0"
-            >
-              by Coldplay · 3 minutes
-            </p>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-auto">
-            <a href="#" class="card-link text-danger" style="font-weight: 500"
-              >DELETE</a
-            >
-          </div>
-          <div class="col-auto">
-            <a href="#" class="card-link text-dark" style="font-weight: 500"
-              >EDIT</a
-            >
-          </div>
-        </div>
-      </li>
-    </ul>
   </div>
+  <!-- Songs -->
+  <ul
+    class="list-group list-group-flush mb-4"
+    style="border-top: none"
+    *ngFor="let a of p.songs"
+  >
+    <li class="list-group-item list-group-item-action">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <img src="../assets/icons/play-button.png" />
+        </div>
+        <div class="col-auto">
+          <p style="margin-bottom: 0; font-weight: 500; font-size: 1.1rem">
+            {{ a.title }}
+          </p>
+          <p
+            class="text-muted"
+            style="font-size: 0.9rem; font-weight: 400; margin-bottom: 0"
+          >
+            by {{ a.artist }} · {{ a.duration }} minutes
+          </p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-auto">
+          <a href="#" class="card-link text-danger" style="font-weight: 500"
+            >DELETE</a
+          >
+        </div>
+        <div class="col-auto">
+          <a
+            (click)="log()"
+            href="#"
+            class="card-link text-dark"
+            style="font-weight: 500"
+            >EDIT</a
+          >
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
