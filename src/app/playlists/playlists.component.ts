@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Playlist, Song, PlaylistComponent } from './playlist.model';
+import { Playlist, Song } from './playlist.model';
 
 @Component({
   selector: 'app-playlists',
